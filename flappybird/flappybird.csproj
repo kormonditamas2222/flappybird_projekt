@@ -10,10 +10,14 @@
 
   <ItemGroup>
     <None Remove="Images\hatter.jfif" />
+    <None Remove="Images\sajd.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Images\hatter.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\sajd.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
