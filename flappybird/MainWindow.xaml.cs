@@ -22,15 +22,26 @@ namespace flappybird
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
             
-            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Interval = TimeSpan.FromMilliseconds(65);
             timer.Tick += Timer_Tick;
+            timer.Start();
         }
 		int speed = 1;
 		private void Timer_Tick(object sender, EventArgs e)
         {
-           
+            double currentTop = Canvas.GetTop(sajd);
+            Canvas.SetTop(sajd, currentTop + speed);
+            speed += 1;
         }
-
+        private void SpaceDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+				double currentTop = Canvas.GetTop(sajd);
+				Canvas.SetTop(sajd, currentTop - 20);
+                speed = 1;
+			}
+        }
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
             sp.Visibility = Visibility.Hidden;
