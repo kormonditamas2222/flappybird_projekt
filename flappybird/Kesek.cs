@@ -26,7 +26,7 @@ namespace flappybird
 		Random rnd = new Random();
 		public double RandomTop()
 		{
-			return -250 + rnd.NextDouble() * 100;
+			return -250 + rnd.NextDouble() * 150;
 		}
 		public Rectangle LefeleKesLetrehozas(double randomY)
 		{
@@ -34,7 +34,7 @@ namespace flappybird
 			kesLe.Width = 75;
 			kesLe.Height = 350;
 			Canvas.SetTop(kesLe, randomY);
-			Canvas.SetLeft(kesLe, 700);
+			Canvas.SetLeft(kesLe, 800);
 			kesLe.Fill = new ImageBrush
 			{
 				ImageSource = new BitmapImage(
@@ -50,7 +50,7 @@ namespace flappybird
 			kesFel.Width = 75;
 			kesFel.Height = 350;
 			Canvas.SetTop(kesFel, randomY + 450);
-			Canvas.SetLeft(kesFel, 700);
+			Canvas.SetLeft(kesFel, 800);
 			kesFel.Fill = new ImageBrush
 			{
 				ImageSource = new BitmapImage(

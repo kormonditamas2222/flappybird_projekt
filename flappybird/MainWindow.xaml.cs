@@ -23,19 +23,21 @@ namespace flappybird
 		public MainWindow()
         {
             InitializeComponent();
+            kesek = new Kesek();
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(65);
             timer.Tick += Timer_Tick;
 
 			spawnTimer = new DispatcherTimer();
-            spawnTimer.Interval = TimeSpan.FromSeconds(3);
+            spawnTimer.Interval = TimeSpan.FromSeconds(4);
             spawnTimer.Tick += SpawnTimer_Tick;
 		}
 		int speed = 1;
+        const int kesspeed = 4;
 		private void Timer_Tick(object sender, EventArgs e)
         {
             MoveSajd();
-            MoveKes();
+            MoveKes(kesek);
         }
         private void MoveSajd()
         {
@@ -43,9 +45,16 @@ namespace flappybird
 			Canvas.SetTop(sajd, currentTop + speed);
 			speed += 1;
 		}
-        private void MoveKes()
+        private void MoveKes(Kesek kesek)
         {
-
+            if (kesek.KesLista != null) 
+            {
+				foreach (Rectangle kes in kesek.KesLista)
+				{
+					double currentLeft = Canvas.GetLeft(kes);
+                    Canvas.SetLeft(kes, currentLeft - kesspeed);
+				}
+			}
         }
         private void SpawnTimer_Tick(object sender, EventArgs e)
         {
@@ -53,7 +62,6 @@ namespace flappybird
         }
         private void Spawn(Kesek kesek)
         {
-            kesek = new Kesek();
             double randomTop = kesek.RandomTop();
             mainCanvas.Children.Add(kesek.LefeleKesLetrehozas(randomTop));
             mainCanvas.Children.Add(kesek.FelfeleKesLetrehozas(randomTop));
