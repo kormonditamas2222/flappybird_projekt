@@ -17,21 +17,46 @@ namespace flappybird
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        DispatcherTimer timer;
+        DispatcherTimer spawnTimer;
+        Kesek kesek;
+		public MainWindow()
         {
             InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
-            
+            timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(65);
             timer.Tick += Timer_Tick;
-            timer.Start();
-        }
+
+			spawnTimer = new DispatcherTimer();
+            spawnTimer.Interval = TimeSpan.FromSeconds(3);
+            spawnTimer.Tick += SpawnTimer_Tick;
+		}
 		int speed = 1;
 		private void Timer_Tick(object sender, EventArgs e)
         {
-            double currentTop = Canvas.GetTop(sajd);
-            Canvas.SetTop(sajd, currentTop + speed);
-            speed += 1;
+            MoveSajd();
+            MoveKes();
+        }
+        private void MoveSajd()
+        {
+			double currentTop = Canvas.GetTop(sajd);
+			Canvas.SetTop(sajd, currentTop + speed);
+			speed += 1;
+		}
+        private void MoveKes()
+        {
+
+        }
+        private void SpawnTimer_Tick(object sender, EventArgs e)
+        {
+            Spawn(kesek);
+        }
+        private void Spawn(Kesek kesek)
+        {
+            kesek = new Kesek();
+            double randomTop = kesek.RandomTop();
+            mainCanvas.Children.Add(kesek.LefeleKesLetrehozas(randomTop));
+            mainCanvas.Children.Add(kesek.FelfeleKesLetrehozas(randomTop));
         }
         private void SpaceDown(object sender, KeyEventArgs e)
         {
@@ -42,11 +67,18 @@ namespace flappybird
                 speed = 1;
 			}
         }
+        
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-            sp.Visibility = Visibility.Hidden;
-            sajd.Visibility = Visibility.Visible;
-            hatter.Visibility = Visibility.Visible;
+            Start(timer, spawnTimer);
+		}
+        private void Start(DispatcherTimer timer, DispatcherTimer spawnTimer)
+        {
+			sp.Visibility = Visibility.Hidden;
+			sajd.Visibility = Visibility.Visible;
+			hatter.Visibility = Visibility.Visible;
+            timer.Start();
+            spawnTimer.Start();
 		}
 	}
 }

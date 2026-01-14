@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="Images\hatter.jfif" />
+    <None Remove="Images\kes.png" />
+    <None Remove="Images\kesle.png" />
     <None Remove="Images\sajd.jpg" />
   </ItemGroup>
 
@@ -18,6 +20,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\sajd.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\kes.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\kesle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

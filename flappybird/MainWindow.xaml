@@ -8,11 +8,21 @@
 		KeyDown="SpaceDown"
 		Focusable="True"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
-	<Canvas x:Name="canvas">
+	<Canvas x:Name="mainCanvas">
 		<StackPanel x:Name="sp" Width="500" Height="450" Canvas.Left="150">
 			<TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0, 100, 0, 0" Text="Repülő sajt"/>
 			<Button Width="100" FontSize="30" Margin="0, 50, 0, 0" Content="Start" Click="Button_Click"/>
 		</StackPanel>
+		<!-- <Rectangle Canvas.Left="700" Canvas.Top="200" Width="75" Height="350">
+			<Rectangle.Fill>
+				<ImageBrush ImageSource="/Images/kes.png"></ImageBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+		<Rectangle Canvas.Left="700" Canvas.Top="-250" Width="75" Height="350">
+			<Rectangle.Fill>
+				<ImageBrush ImageSource="/Images/kesle.png"></ImageBrush>
+			</Rectangle.Fill>
+		</Rectangle> -->
 		<Image Visibility="Hidden" x:Name="hatter" Source="\images\hatter.jfif" Height="450" Width="800" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Center"></Image>
 		<Ellipse Visibility="Hidden" x:Name="sajd" Height="50" Canvas.Left="40" Canvas.Top="120" Width="50">
 			<Ellipse.Fill>
