@@ -46,6 +46,7 @@ namespace flappybird
 			Canvas.SetTop(sajd, currentTop + speed);
 			speed += 1;
 		}
+
         private void MoveKes()
         {
             if (kesek.KesLista != null) 
