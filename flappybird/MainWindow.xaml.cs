@@ -37,7 +37,8 @@ namespace flappybird
 		private void Timer_Tick(object sender, EventArgs e)
         {
             MoveSajd();
-            MoveKes(kesek);
+            MoveKes();
+            CheckCollision();
         }
         private void MoveSajd()
         {
@@ -45,7 +46,7 @@ namespace flappybird
 			Canvas.SetTop(sajd, currentTop + speed);
 			speed += 1;
 		}
-        private void MoveKes(Kesek kesek)
+        private void MoveKes()
         {
             if (kesek.KesLista != null) 
             {
@@ -56,11 +57,26 @@ namespace flappybird
 				}
 			}
         }
+        private void CheckCollision()
+        {
+            if (kesek.KesLista != null)
+            {
+                foreach (Rectangle kes in kesek.KesLista)
+                {
+                    EllipseGeometry ellipseGeometry = new EllipseGeometry(new Rect(Canvas.GetLeft(sajd), Canvas.GetTop(sajd), sajd.ActualWidth, sajd.ActualHeight));
+                    RectangleGeometry rectangleGeometry = new RectangleGeometry(new Rect(Canvas.GetLeft(kes), Canvas.GetTop(kes), kes.ActualWidth, kes.ActualHeight));
+                    if (ellipseGeometry.FillContainsWithDetail(rectangleGeometry) != IntersectionDetail.Empty)
+                    {
+                        End();
+                    }
+                }
+            }
+        }
         private void SpawnTimer_Tick(object sender, EventArgs e)
         {
-            Spawn(kesek);
+            Spawn();
         }
-        private void Spawn(Kesek kesek)
+        private void Spawn()
         {
             double randomTop = kesek.RandomTop();
             mainCanvas.Children.Add(kesek.LefeleKesLetrehozas(randomTop));
@@ -78,9 +94,9 @@ namespace flappybird
         
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-            Start(timer, spawnTimer);
+            Start();
 		}
-        private void Start(DispatcherTimer timer, DispatcherTimer spawnTimer)
+        private void Start()
         {
 			sp.Visibility = Visibility.Hidden;
 			sajd.Visibility = Visibility.Visible;
@@ -88,5 +104,17 @@ namespace flappybird
             timer.Start();
             spawnTimer.Start();
 		}
-	}
+        private void End()
+        {
+            timer.Stop();
+            spawnTimer.Stop();
+            sajd.Visibility = Visibility.Hidden;
+            hatter.Visibility = Visibility.Hidden;
+            foreach (Rectangle kes in kesek.KesLista)
+            {
+                kes.Visibility = Visibility.Hidden;
+            }
+            sp_end.Visibility = Visibility.Visible;
+        }
+    }
 }
