@@ -69,10 +69,14 @@ namespace flappybird
                     if (ellipseGeometry.FillContainsWithDetail(rectangleGeometry) != IntersectionDetail.Empty)
                     {
                         End();
-                    }
+                    }                   
                 }
             }
-        }
+			if (Canvas.GetTop(sajd) <= 0 || Canvas.GetTop(sajd) + sajd.ActualHeight >= mainCanvas.ActualHeight)
+			{
+				End();
+			}
+		}
         private void SpawnTimer_Tick(object sender, EventArgs e)
         {
             Spawn();
