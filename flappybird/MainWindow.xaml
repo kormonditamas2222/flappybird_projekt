@@ -7,14 +7,15 @@
         mc:Ignorable="d"
 		KeyDown="SpaceDown"
 		Focusable="True"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Repülő sajt" Height="450" Width="800" ResizeMode="NoResize">
 	<Canvas x:Name="mainCanvas">
-		<StackPanel x:Name="sp" Width="500" Height="450" Canvas.Left="150">
+		<StackPanel x:Name="sp" Width="800" Height="450" Background="Goldenrod">
 			<TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0, 100, 0, 0" Text="Repülő sajt"/>
 			<Button Width="100" FontSize="30" Margin="0, 50, 0, 0" Content="Start" Click="Button_Click"/>
 		</StackPanel>
-		<StackPanel x:Name="sp_end" Width="800" Height="75" Canvas.Top="175" Visibility="Hidden">
+		<StackPanel x:Name="sp_end" Width="800" Height="150" Canvas.Top="175" Visibility="Hidden">
 			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Text="GAME OVER"/>
+			<TextBlock x:Name="tb_pont" Text="placeholder" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 		</StackPanel>
 		<!-- <Rectangle Canvas.Left="700" Canvas.Top="200" Width="75" Height="350">
 			<Rectangle.Fill>
@@ -27,6 +28,7 @@
 			</Rectangle.Fill>
 		</Rectangle> -->
 		<Image Visibility="Hidden" x:Name="hatter" Source="\images\hatter.jfif" Height="450" Width="800" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Center"></Image>
+		<TextBlock x:Name="pontszam" Canvas.Left="394" Text="0" FontSize="20" Panel.ZIndex="1" Visibility="Hidden"/>
 		<Ellipse Visibility="Hidden" x:Name="sajd" Height="50" Canvas.Left="40" Canvas.Top="120" Width="50">
 			<Ellipse.Fill>
 				<ImageBrush ImageSource="/Images/sajd.jpg"></ImageBrush>

@@ -19,6 +19,7 @@ namespace flappybird
     {
         DispatcherTimer timer;
         DispatcherTimer spawnTimer;
+        DispatcherTimer pontTimer;
         Kesek kesek;
 		public MainWindow()
         {
@@ -31,6 +32,10 @@ namespace flappybird
 			spawnTimer = new DispatcherTimer();
             spawnTimer.Interval = TimeSpan.FromSeconds(4);
             spawnTimer.Tick += SpawnTimer_Tick;
+
+            pontTimer = new DispatcherTimer();
+            pontTimer.Interval = TimeSpan.FromSeconds(4);
+            pontTimer.Tick += PontTimer_Tick;
 		}
 		int speed = 1;
         const int kesspeed = 4;
@@ -69,16 +74,22 @@ namespace flappybird
                     if (ellipseGeometry.FillContainsWithDetail(rectangleGeometry) != IntersectionDetail.Empty)
                     {
                         End();
-                    }                   
+                    }
                 }
             }
-			if (Canvas.GetTop(sajd) <= 0 || Canvas.GetTop(sajd) + sajd.ActualHeight >= mainCanvas.ActualHeight)
-			{
-				End();
-			}
-		}
+            if (Canvas.GetTop(sajd) <= 0 || Canvas.GetTop(sajd) + sajd.ActualHeight >= mainCanvas.ActualHeight)
+            {
+                End();
+            }
+        }
+        int tickNum = 0;
         private void SpawnTimer_Tick(object sender, EventArgs e)
         {
+            tickNum++;
+            if (tickNum == 4)
+            {
+                pontTimer.Start();
+            }
             Spawn();
         }
         private void Spawn()
@@ -87,6 +98,13 @@ namespace flappybird
             mainCanvas.Children.Add(kesek.LefeleKesLetrehozas(randomTop));
             mainCanvas.Children.Add(kesek.FelfeleKesLetrehozas(randomTop));
         }
+        int pont = 0;
+        private void PontTimer_Tick(Object sender, EventArgs e)
+        {
+            pont++;
+            pontszam.Text = pont.ToString();
+        }
+
         private void SpaceDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
@@ -106,6 +124,7 @@ namespace flappybird
 			sp.Visibility = Visibility.Hidden;
 			sajd.Visibility = Visibility.Visible;
 			hatter.Visibility = Visibility.Visible;
+            pontszam.Visibility = Visibility.Visible;
             timer.Start();
             spawnTimer.Start();
 		}
@@ -113,13 +132,16 @@ namespace flappybird
         {
             timer.Stop();
             spawnTimer.Stop();
+            pontTimer.Stop();
             sajd.Visibility = Visibility.Hidden;
             hatter.Visibility = Visibility.Hidden;
+            pontszam.Visibility = Visibility.Hidden;
             foreach (Rectangle kes in kesek.KesLista)
             {
                 kes.Visibility = Visibility.Hidden;
             }
             sp_end.Visibility = Visibility.Visible;
+            tb_pont.Text = $"Pontszám: {pont}";
         }
     }
 }
