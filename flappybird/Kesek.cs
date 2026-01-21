@@ -49,7 +49,7 @@ namespace flappybird
 			Rectangle kesFel = new Rectangle();
 			kesFel.Width = 75;
 			kesFel.Height = 350;
-			Canvas.SetTop(kesFel, randomY + 450);
+			Canvas.SetTop(kesFel, randomY + 475);
 			Canvas.SetLeft(kesFel, 800);
 			kesFel.Fill = new ImageBrush
 			{
