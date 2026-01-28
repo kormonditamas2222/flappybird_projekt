@@ -18,17 +18,8 @@
 		<StackPanel x:Name="sp_end" Width="800" Height="350" Canvas.Top="100" Visibility="Hidden">
 			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Text="GAME OVER"/>
 			<TextBlock x:Name="tb_pont" Text="placeholder" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<Button Width="100" FontSize="30" Content="Újra" Click="Ujra_Click" Focusable="False"/>
 		</StackPanel>
-		<!-- <Rectangle Canvas.Left="700" Canvas.Top="200" Width="75" Height="350">
-			<Rectangle.Fill>
-				<ImageBrush ImageSource="/Images/kes.png"></ImageBrush>
-			</Rectangle.Fill>
-		</Rectangle>
-		<Rectangle Canvas.Left="700" Canvas.Top="-250" Width="75" Height="350">
-			<Rectangle.Fill>
-				<ImageBrush ImageSource="/Images/kesle.png"></ImageBrush>
-			</Rectangle.Fill>
-		</Rectangle> -->
 		<Image Visibility="Hidden" x:Name="hatter" Source="\images\hatter.jfif" Height="450" Width="800" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Center"></Image>
 		<Image Visibility="Hidden" x:Name="esoshatter" Source="/Images/esos.jpg" Height="450" Width="800" HorizontalAlignment="Left" Stretch="Fill" VerticalAlignment="Center"></Image>
 		<TextBlock x:Name="pontszam" Canvas.Left="394" Text="0" FontSize="40" Panel.ZIndex="2" Visibility="Hidden"/>

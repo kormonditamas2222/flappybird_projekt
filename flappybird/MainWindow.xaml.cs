@@ -143,6 +143,13 @@ namespace flappybird
             kodos = true;
             Start();
 		}
+        private void Ujra_Click(object sender, RoutedEventArgs e)
+        {
+            Canvas.SetTop(sajd, 120);
+            pont = 0;
+            speed = 1;
+            Start();
+        }
 		private void Start()
         {
 			sp.Visibility = Visibility.Hidden;
