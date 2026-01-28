@@ -9,14 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\esos.jpg" />
     <None Remove="Images\hatter.jfif" />
     <None Remove="Images\kes.png" />
     <None Remove="Images\kesle.png" />
+    <None Remove="Images\kod.png" />
     <None Remove="Images\sajd.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\esos.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\hatter.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\kod.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\sajd.jpg">

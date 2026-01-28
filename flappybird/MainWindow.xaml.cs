@@ -21,6 +21,8 @@ namespace flappybird
         DispatcherTimer spawnTimer;
         DispatcherTimer pontTimer;
         Kesek kesek;
+        bool esos;
+        bool kodos;
 		public MainWindow()
         {
             InitializeComponent();
@@ -110,21 +112,55 @@ namespace flappybird
             if (e.Key == Key.Space)
             {
 				double currentTop = Canvas.GetTop(sajd);
-				Canvas.SetTop(sajd, currentTop - 20);
+				if (!esos)
+                {
+					Canvas.SetTop(sajd, currentTop - 20);
+				}
+                else
+                {
+                    Canvas.SetTop(sajd, currentTop - 10);
+                }
                 speed = 1;
 			}
         }
         
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
+            esos = false;
+            kodos = false;
             Start();
 		}
-        private void Start()
+		private void Esos_Click(object sender, RoutedEventArgs e)
+		{
+            esos = true;
+            kodos = false;
+            Start();
+		}
+
+		private void Kodos_Click(object sender, RoutedEventArgs e)
+		{
+            esos = false;
+            kodos = true;
+            Start();
+		}
+		private void Start()
         {
 			sp.Visibility = Visibility.Hidden;
 			sajd.Visibility = Visibility.Visible;
-			hatter.Visibility = Visibility.Visible;
-            pontszam.Visibility = Visibility.Visible;
+			pontszam.Visibility = Visibility.Visible;
+            if (esos)
+            {
+                esoshatter.Visibility = Visibility.Visible;
+            }
+            else if (kodos)
+            {
+                hatter.Visibility = Visibility.Visible;
+                kod.Visibility = Visibility.Visible;
+            }
+            else
+            {
+				hatter.Visibility = Visibility.Visible;
+			}
             timer.Start();
             spawnTimer.Start();
 		}
@@ -135,6 +171,8 @@ namespace flappybird
             pontTimer.Stop();
             sajd.Visibility = Visibility.Hidden;
             hatter.Visibility = Visibility.Hidden;
+            esoshatter.Visibility = Visibility.Hidden;
+            kod.Visibility = Visibility.Hidden;
             pontszam.Visibility = Visibility.Hidden;
             foreach (Rectangle kes in kesek.KesLista)
             {
@@ -143,5 +181,5 @@ namespace flappybird
             sp_end.Visibility = Visibility.Visible;
             tb_pont.Text = $"Pontszám: {pont}";
         }
-    }
+	}
 }

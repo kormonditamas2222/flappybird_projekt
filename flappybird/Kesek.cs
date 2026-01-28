@@ -35,6 +35,7 @@ namespace flappybird
 			kesLe.Height = 350;
 			Canvas.SetTop(kesLe, randomY);
 			Canvas.SetLeft(kesLe, 800);
+			Canvas.SetZIndex(kesLe, 0);
 			kesLe.Fill = new ImageBrush
 			{
 				ImageSource = new BitmapImage(
@@ -51,6 +52,7 @@ namespace flappybird
 			kesFel.Height = 350;
 			Canvas.SetTop(kesFel, randomY + 475);
 			Canvas.SetLeft(kesFel, 800);
+			Canvas.SetZIndex(kesFel, 0);
 			kesFel.Fill = new ImageBrush
 			{
 				ImageSource = new BitmapImage(
