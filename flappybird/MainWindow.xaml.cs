@@ -149,6 +149,7 @@ namespace flappybird
             kesek = new Kesek();
             tickNum = 0;
             pont = 0;
+            pontszam.Text = pont.ToString();
             speed = 1;
             Start();
         }
