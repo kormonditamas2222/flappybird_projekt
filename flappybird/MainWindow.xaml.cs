@@ -146,6 +146,8 @@ namespace flappybird
         private void Ujra_Click(object sender, RoutedEventArgs e)
         {
             Canvas.SetTop(sajd, 120);
+            kesek = new Kesek();
+            tickNum = 0;
             pont = 0;
             speed = 1;
             Start();
